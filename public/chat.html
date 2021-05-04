@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="/img/favicon.png">
+        <link rel="stylesheet" href="/css/styles.min.css">
+    </head>
+    <body>
+        Chat App
+        <div class="chat__main">
+            <div id="msg-container"></div>
+        </div>
+       
+        <input type="text" name="chat" required/>
+        <button id="send">send</button>
+        <br>
+        <button id="get_location">Get Location</button>
+        <div class="chat__sidebar">
+            <div id="room-container"></div>
+        </div>
+
+        <script id="msg-tpl" type="text/html">
+            <div>
+                <p>({{username}}) {{createdAt}} - {{ message }}</p>
+            </div>
+        </script>
+        <script id="location-tpl" type="text/html">
+            <div>
+                <p>({{username}}) {{createdAt}} - <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+            </div>
+        </script>
+        <script id="room-tpl" type="text/html">
+            <h2 class="room-title">{{room}}</h2>
+            <h3 class="list-title">Users</h3>
+            <ul class="users">
+                {{#users}}
+                <li>{{username}}</li>
+                {{/users}}
+            </ul>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+    </body>
+</html>
